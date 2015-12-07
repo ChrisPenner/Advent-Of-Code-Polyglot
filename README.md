@@ -26,7 +26,7 @@ Guidelines
     situation, make sure to include it!
 -   The goal of this is to be easy to read, so include comments and avoid using
     multiple files and using complicated build steps unless necessary.
--   I'm not an expert in every language, so if you see improvements that could
+-   I'm not an expert, so if you see improvements that could
     be made to a solution in the repository, feel free to submit a pull request
     to clean it up, but keep in mind that if it's a trivial difference, or is
     simply personal preference, it may be ignored.
