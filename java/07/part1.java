@@ -29,11 +29,8 @@ public class part1 {
 
 	/**
 	 * Recursive method fetching values for variables found in string s
-	 * 
-	 * @param key
-	 *            For what key we need the value
-	 * @param gate
-	 *            The gate
+	 * @param key For what key we need the value
+	 * @param gate The gate
 	 * @return return A new Integer containing the value for the key
 	 */
 	private static Integer getValue(String key, String gate) {
@@ -101,9 +98,7 @@ public class part1 {
 
 	/**
 	 * Checks if the string is numeric
-	 * 
-	 * @param s
-	 *            The string
+	 * @param s The string
 	 * @return true if the string is numeric
 	 */
 	public static boolean isNumeric(String s) {
