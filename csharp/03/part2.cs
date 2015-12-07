@@ -17,8 +17,10 @@ public class Day03
 
 		var cmds = Console.ReadLine();
 		var pp = new[]{Tuple.Create(0, 0), Tuple.Create(0, 0)};
+		
+		//i — command index. i%2 — index of person (Santa / robo Santa) in pp array
 		Console.WriteLine(
-			cmds.Select((c, i) => pp[i%2] = Tuple.Create(pp[i%2].Item1+dx[c], pp[i%2].Item2+dy[c]))
+			cmds.Select((c, i) => pp[i%2] = Tuple.Create(pp[i%2].Item1+dx[c], pp[i%2].Item2+dy[c])) 
 			.Concat(new []{Tuple.Create(0, 0)})
 			.Distinct().Count());
 	}
