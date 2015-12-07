@@ -11,7 +11,7 @@ public class part1 {
 
 	public static void main(String[] args) {
 
-		try (BufferedReader br = new BufferedReader(new FileReader(new File("C:/Users/a.pagac/success2.1/Test/input")))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(new File("input.txt")))) {
 			String line;
 			while ((line = br.readLine()) != null) {
 				// separate the variable from its gate
