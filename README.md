@@ -26,13 +26,20 @@ Guidelines
     situation, make sure to include it!
 -   The goal of this is to be easy to read, so include comments and avoid using
     multiple files and using complicated build steps unless necessary.
--   I'm not an expert, so if you see improvements that could
-    be made to a solution in the repository, feel free to submit a pull request
-    to clean it up, but keep in mind that if it's a trivial difference, or is
-    simply personal preference, it may be ignored.
+-   I'm not an expert, so if you see improvements that could be made to a
+    solution in the repository, feel free to submit a pull request to clean it
+    up, but keep in mind that if it's a trivial difference, or is simply
+    personal preference, it may be ignored.
 -   No code will be posted for a challenge until the next challenge is
     released, let's give people a chance to solve things on their own.
 -   In pull requests please follow the established pattern:
-  +  `language-name/day-num/part#.extension`
+  + `language-name/day-num/part#.extension`
+-   How will we decide what the optimal solution is?
+  + For now I'm just accepting solutions as they come in, if someone can
+    demonstrate that their solution is either more idiomatic to the language or 
+    is significantly cleaner, then we'll switch it in. Keep in mind that it's
+    about seeing how idioms differ amongst different languages, not necessarily 
+    about getting the most optimal solution. Let's not get competitive about it.
+
 
 Have fun!!
