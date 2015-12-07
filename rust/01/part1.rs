@@ -30,11 +30,11 @@ fn import_data() -> String {
         Err(e) => panic!("file error: {}", e),
     };
 
-    let mut directions = String::new();
-    match file.read_to_string(&mut directions){
+    let mut data = String::new();
+    match file.read_to_string(&mut data){
         Ok(_) => {},
         Err(e) => panic!("file error: {}", e),
     };
 
-	directions
+	data
 }
