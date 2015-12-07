@@ -33,6 +33,6 @@ Guidelines
 -   No code will be posted for a challenge until the next challenge is
     released, let's give people a chance to solve things on their own.
 -   In pull requests please follow the established pattern:
-  +  language-name/day-num/part#.extension
+  +  `language-name/day-num/part#.extension`
 
 Have fun!!
