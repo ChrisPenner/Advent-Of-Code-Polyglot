@@ -20,6 +20,9 @@ Guidelines
     pull-request and I'll get to them as soon as I can.
 -   Please don't include your problem's 'input.txt' or solution, as these are
     different for each person.
+-   Please put each solution (including part 1 and part 2) into separate files
+    (even if there's a bit of code duplication) it makes it easier to figure out
+    what's going on.
 -   Please try to write clean code solutions in your language of choice, and
     remember that this is about seeing different ways that languages approach
     things, so if a particular language feature or idiom applies nicely to the
@@ -30,8 +33,6 @@ Guidelines
     solution in the repository, feel free to submit a pull request to clean it
     up, but keep in mind that if it's a trivial difference, or is simply
     personal preference, it may be ignored.
--   No code will be posted for a challenge until the next challenge is
-    released, let's give people a chance to solve things on their own.
 -   In pull requests please follow the established pattern:
   + `language-name/day-num/part#.extension`
 -   How will we decide what the optimal solution is?
