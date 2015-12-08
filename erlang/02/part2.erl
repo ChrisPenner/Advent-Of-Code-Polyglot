@@ -1,6 +1,7 @@
 -module(part2).
 -export([main/0]).
 
+%% Similar to the first, this time we don't turn the input list into a list of all the sides (L*W, etc.,).
 main() ->
 	{ok, File} = file:open("input", [read]),
 	Lines = read(File),
@@ -20,6 +21,8 @@ read(File) ->
 
 sum_sides([], Acc) ->
 	Acc;
+%% Here we get the max element of the tuple and remove it,
+%% Then we can do some simple folds to get the result
 sum_sides([H|T], Acc) ->
 	Max = lists:max(tuple_to_list(H)),
 	Rest = tuple_to_list(H) -- [Max],
