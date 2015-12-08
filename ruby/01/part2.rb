@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-n = 0
-File.read('input').chars.reduce(0) do |s, c|
-  break if s == -1
-  n = n + 1
-  s + (c == '(' ? 1 : -1)
+count = 0
+File.read('input').chars.reduce(0) do |curr_floor, char|
+  break if curr_floor == -1
+  count = count + 1
+  curr_floor + (char == '(' ? 1 : -1)
 end
-puts n
+puts count
