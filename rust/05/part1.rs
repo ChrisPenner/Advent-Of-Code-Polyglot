@@ -52,6 +52,8 @@ fn contains_double_letters(word: &str) -> bool {
 
     let mut last_letter = '\x00';
     for letter in word.chars(){
+        // maybe not the cleanest way: when there's a double letter we instantly
+        // return, otherwise save the letter
         last_letter = match letter == last_letter {
             true => return true,
             false => letter,

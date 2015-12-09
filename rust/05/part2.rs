@@ -25,9 +25,7 @@ fn main(){
 fn contains_repeating_letter(word: String) -> bool {
 
     for ii in 0..word.len() - 2 {
-        let tripple = &word[ii..ii+3];
-
-        if tripple.chars().nth(0) == tripple.chars().nth(2) {
+        if word[ii] == word[ii+2] {
             return true;
         }
     }
