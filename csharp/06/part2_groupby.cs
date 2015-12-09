@@ -20,9 +20,10 @@ public class Day06
 			{"toggle", x => x+2},
 		};
 		// Idea of this solution:
-		// make a lazy sequence of tuples (x, y, change), and apply them to bulbs map during the enumeration.
-		var map = new int[1000,1000];
-		var effects = 
+		// make a sequence of tuples (x, y, change), group it by (x, y) and aggregate all changes.
+		// It is quite slow and memory consuming solution
+		// The reason is 'group by' operation which forces IEnumerable to be evaluated and stored in large dictionary.
+		var brightness = 
 			from line in File.ReadLines("input.txt")
 			let change = cmds.First(c => line.StartsWith(c.Key)).Value
 			let splitted = line.Split(' ')
@@ -30,8 +31,8 @@ public class Day06
 			let p2=splitted[splitted.Length-1].Split(',').Select(int.Parse).ToList()
 			from x in Enumerable.Range(p1[0], p2[0]-p1[0]+1)
 			from y in Enumerable.Range(p1[1], p2[1]-p1[1]+1)
-			select map[x,y]=change(map[x, y]);
-		effects.Count(); //force to enumerate lazy sequence
-		Console.WriteLine(map.Cast<int>().Sum()); //Cast converts int[,] to IEnumerable<int>
+			group change by new {x, y} into g
+			select g.Aggregate(0, (value, change) => change(value));
+		Console.WriteLine(brightness.Sum());
 	}
 }
