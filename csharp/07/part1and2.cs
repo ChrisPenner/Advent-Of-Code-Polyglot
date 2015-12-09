@@ -27,7 +27,6 @@ namespace ac
 			{
 				if (Calculated && cache) return val;
 				Calculated = true;
-				Console.Write(".");
 				return val = calculate();
 			}
 		}
