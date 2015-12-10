@@ -2,17 +2,22 @@
 
 require 'set'
 
-# monkey-path the Array class
-class Array
+class Claus
+  attr_accessor :coords
+
+  def initialize(x, y)
+    @coords = [x, y]
+  end
+
   def move!(c)
     if c == '^'
-      self[1] = self[1] + 1
+      @coords[1] = @coords[1] + 1
     elsif c == 'v'
-      self[1] = self[1] - 1
+      @coords[1] = @coords[1] - 1
     elsif c == '>'
-      self[0] = self[0] + 1
+      @coords[0] = @coords[0] + 1
     elsif c == '<'
-      self[0] = self[0] - 1
+      @coords[0] = @coords[0] - 1
     end
   end
 end
@@ -21,18 +26,18 @@ set = Set.new
 
 input = File.read('input').chars
 
-santa = [0, 0]
-robo = [0, 0]
+santa = Claus.new(0, 0)
+robo = Claus.new(0, 0)
 
-set << santa.dup
+set << santa.coords.dup
 
 input.each.with_index do |char, i|
   if i % 2 == 0
     santa.move! char
-    set << santa.dup
+    set << santa.coords.dup
   else
     robo.move! char
-    set << robo.dup
+    set << robo.coords.dup
   end
 end
 
