@@ -1,27 +1,14 @@
-inp = 'XXXXXXXX'
+import re
 
-# Loop 40 times
-for i in xrange(40):
-    new_sequence = ''
-    # Prime it with the first letter
-    prev_char = inp[0]
-    # Number of the previous char in a row there's been.
-    in_a_row = 1
-    # Loop over chars, we can skip the first one
-    for char in inp[1:]:
-        # Add to the total.
-        if char == prev_char:
-            in_a_row += 1
-            continue
-        # Otherwise we need to put it in the new sequence
-        else:
-            new_sequence += str(in_a_row) + prev_char
-            prev_char = char
-            in_a_row = 1
-    # After the loop is done we need to finish the last number.
-    new_sequence += str(in_a_row) + prev_char
-    prev_char = char
-    in_a_row = 1
-    inp = new_sequence
+input = '1113222113'
+returningDigits = re.compile('((\\d)(?:\\2|)+)')
 
-print len(new_sequence)
+for i in range(0,40):
+    newInput = ''
+    for match, character in returningDigits.findall(input):
+        newInput += str(len(match))
+        newInput += character
+
+    input = newInput
+
+print(len(input))
