@@ -32,7 +32,7 @@ robo = Claus.new(0, 0)
 set << santa.coords.dup
 
 input.each.with_index do |char, i|
-  if i % 2 == 0
+  if i.even?
     santa.move! char
     set << santa.coords.dup
   else
