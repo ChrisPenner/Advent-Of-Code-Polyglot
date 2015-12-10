@@ -1,0 +1,7 @@
+[package]
+name = "adventofcode-day04"
+version = "0.1.0"
+authors = ["Fabian Würfl <fabian.wuerfl@gmx.at>"]
+
+[dependencies]
+rust-crypto = "^0.2"
