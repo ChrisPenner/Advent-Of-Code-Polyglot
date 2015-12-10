@@ -1,0 +1,5 @@
+root = true
+
+[*.erl]
+indent_style = tab
+indent_size = 4
