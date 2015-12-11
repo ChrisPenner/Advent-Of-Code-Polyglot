@@ -42,7 +42,7 @@ def is_valid(password):
             and pairs.search(current_password)
             and not bad.search(current_password))
 
-current_password = 'vzbxkghb'
+current_password = 'XXXXXXXX'
 
 while not is_valid(current_password):
     current_password = increment_string(current_password)
