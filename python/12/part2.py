@@ -1,33 +1,20 @@
 import json
-from itertools import chain
 
-with open('input.txt') as f:
-    inp = json.load(f)
+with open('input.txt') as file:
+    inp = json.load(file)
 
-# Takes a list of values and returns a list of lists
-# Uses only the keys from dicts.
-def listify(v):
-    if isinstance(v, dict):
-        values = v.values()
-        # Skip the values of any dict containing 'red'
-        return values if 'red' not in values else []
-    if isinstance(v, list):
-        return v
-    return [v]
+def sum_numbers_in_json(json):
+    if isinstance(json, int):
+        return json
 
-# Takes a list of possibly nested lists/dicts/values and returns them as a flat
-# list.
-def flatten(v):
-    # Once we don't have any more nested lists/dicts, return
-    if not any((isinstance(x, list) or isinstance(x, dict)) for x in v):
-        return v
-    # Make everything a list
-    v = map(listify, v)
-    # Join all those lists together
-    v = list(chain(*v))
-    # Recursively flatten
-    return flatten(v)
+    elif isinstance(json, list):
+        return sum(sum_numbers_in_json(x) for x in json)
 
-values = flatten(inp)
-values = filter(lambda x: isinstance(x, int), values)
-print sum(values)
+    elif isinstance(json, dict):
+        values = json.values()
+        if 'red' in values:
+            return 0
+        return sum(sum_numbers_in_json(x) for x in values)
+    return 0
+
+print(sum_numbers_in_json(inp))
