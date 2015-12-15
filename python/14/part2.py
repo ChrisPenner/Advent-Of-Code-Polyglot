@@ -22,8 +22,8 @@ time = 2503
 for slice in race_sequence:
     # Get new total distances to date
     distances = map(add, distances, slice)
-    # Get the winners of the current round
-    winners = [int(x == max(distances)) for x in distances]
+    # Get the winners of the current round, (True, False) is (1, 0) in addition.
+    winners = [x == max(distances) for x in distances]
     # Add the scores to the scoreboard
     scores = map(add, scores, winners)
 
