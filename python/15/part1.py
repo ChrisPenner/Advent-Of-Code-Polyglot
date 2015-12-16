@@ -11,10 +11,8 @@ with open('input.txt') as f:
 def get_score(amounts, ings):
     totals = []
     by_ing = zip(*ings)
-    # print by_ing
     for vals in by_ing:
         totals.append(map(lambda x: x[0] * x[1], zip(vals, amounts)))
-    # print totals
     next = map(sum, totals)
     calories = next[-1]
     next = next[:-1]
@@ -31,6 +29,4 @@ for v in xrange(101):
             y = 100-v-w-x
             all.append(get_score([v, w, x, y], ingredients))
 
-# 222870
 print max(all)
-# 117936
