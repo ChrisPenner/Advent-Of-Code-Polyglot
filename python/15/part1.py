@@ -23,7 +23,6 @@ all = []
 
 # Go through all combinations
 for v in xrange(101):
-    print v
     for w in xrange(101-v):
         for x in xrange(101-v-w):
             y = 100-v-w-x
