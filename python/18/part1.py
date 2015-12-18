@@ -1,8 +1,8 @@
 with open('input.txt') as f:
     # Set up the board
-    lights = set((x,y) for y, line in enumerate(f)
-                 for x, char in enumerate(line.strip())
-                 if char == '#')
+    lights = { (x,y) for y, line in enumerate(f)
+              for x, char in enumerate(line.strip())
+              if char == '#' }
 
 # This returns the number of neighbours that are turned on.
 neighbours = lambda x,y: sum((_x,_y) in lights for _x in (x-1,x,x+1)
@@ -11,7 +11,7 @@ neighbours = lambda x,y: sum((_x,_y) in lights for _x in (x-1,x,x+1)
 # Do 100 iterations
 for c in xrange(100):
     # Calculate new 'lights' from previous one
-    lights = set((x,y) for x in xrange(100) for y in xrange(100)
-                 if (x,y) in lights and 2 <= neighbours(x,y) <= 3
-                 or (x,y) not in lights and neighbours(x,y) == 3)
+    lights = { (x,y) for x in xrange(100) for y in xrange(100)
+              if (x,y) in lights and 2 <= neighbours(x,y) <= 3
+              or (x,y) not in lights and neighbours(x,y) == 3 }
 print len(lights)
