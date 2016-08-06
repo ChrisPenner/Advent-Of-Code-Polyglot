@@ -1,46 +1,23 @@
 #!/usr/bin/env groovy
 
-int count(String s) {
-	boolean esc = false		// escape char
-	int unicode = 0			// counter within unicode sequence
-	int i = 0				// count
+def counter = { s ->
+	// Save original string
+	def ss = s
 
-	// Note: in Groovy, return in a closure means 'next',
-	// not 'return from function or method'
+	// Remove first and last chars (double quotes)
+	s = s.substring(1, s.length() - 1)
 
-	s.each { c ->
-		if (unicode) {
-			// In unicode sequence. Eat up characters
-			unicode--
-			return
-		}
+	// Replace \\ and \" by dummy character.
+	// Do not replace \\ by \, otherwise the next expression will be wrong.
+	// This is ok as we are only counting
+	s = s.replaceAll(~/\\["\\]/, '£')
 
-		// Escape / not escape
-		if (!esc) {
-			if (c == '\\') {
-				esc = true
-				return
-			} else if (c == '"') {
-				return
-			}
-		} else {
-			esc = false
-			if (c == 'x') {
-				// Unicode placeholder detected
-				unicode = 2
-			}
-		}
+	// Replace \xhh by dummy character
+	s = s.replaceAll(~/\\x../, '£')
 
-		i++
-	}
-
-	return i
+	// Calculate length differences
+	ss.length() - s.length()
 }
 
-
-int total = 0
-new File('input.txt').each { line ->
-	total = total + line.size() - count(line)
-}
-
-println total
+def strings = new File('input.txt') as String[]
+println strings.collect(counter).sum()
