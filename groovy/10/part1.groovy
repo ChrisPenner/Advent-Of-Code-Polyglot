@@ -3,8 +3,9 @@ import java.util.regex.*
 def s = '3113322113'        // your puzzle input here
 def regex = '((.)\\2*)'     // capture digit repetition
 
+def p = Pattern.compile(regex)
+
 40.times {
-    def p = Pattern.compile(regex)
     def m = p.matcher(s)
     def next = new StringBuilder()
     while (m.find()) {
