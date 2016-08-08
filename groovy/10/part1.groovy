@@ -1,9 +1,10 @@
 import java.util.regex.*
 
-def s = '3113322113'        // your puzzle input here
-def regex = '((.)\\2*)'     // capture digit repetition
+// Your puzzle input here
+def s = '3113322113'
 
-def p = Pattern.compile(regex)
+// Capture digit repetition in the second group
+def p = Pattern.compile('((.)\\2*)')
 
 40.times {
     def m = p.matcher(s)
