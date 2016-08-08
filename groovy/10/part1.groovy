@@ -4,7 +4,7 @@ import java.util.regex.*
 def s = '3113322113'
 
 // Capture digit repetition in the second group
-def p = Pattern.compile('((.)\\2*)')
+def p = Pattern.compile('((\\d)\\2*)')
 
 40.times {
     def m = p.matcher(s)
