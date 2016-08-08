@@ -1,6 +1,6 @@
 import java.util.regex.*
 
-def s = '113332'            // your puzzle input here
+def s = '3113322113'        // your puzzle input here
 def regex = '((.)\\2*)'     // capture digit repetition
 
 40.times {
