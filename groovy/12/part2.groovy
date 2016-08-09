@@ -16,11 +16,6 @@ int add(o) {
     return 0    // String
 }
 
-// Read input as a string
 def json = new File('input.txt').text
-
-// Turn it into a groovy object
 def jsonObject = new JsonSlurper().parseText(json)
-
-// Recursively add numbers and print total
 println add(jsonObject)
