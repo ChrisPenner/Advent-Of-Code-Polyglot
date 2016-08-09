@@ -9,9 +9,9 @@ char getNextChar(char c) {
     (char) n + a                    // back to char
 }
 
-String getNextString(String chars) {
-    def nextChar = getNextChar(chars[-1] as char)
-    def firstChars = chars[0..<-1]
+String getNextString(s) {
+    def nextChar = getNextChar(s[-1] as char)
+    def firstChars = s[0..<-1]
 
     // Replace the last character by the next one
     if (nextChar != 'a') return firstChars + nextChar
@@ -20,12 +20,12 @@ String getNextString(String chars) {
     return getNextString(firstChars) + nextChar
 }
 
-boolean containsForbiddenChars(String password) {
+boolean containsForbiddenChars(password) {
     def forbiddenChars = ['i', 'o', 'l']
     forbiddenChars.any { password.contains it }
 }
 
-boolean containsPair(String password) {
+boolean containsPair(password) {
     // ([a-z]) -> any letter
     // \1 -> repeating
     // ([a-z])\2/ -> another pair of letters
@@ -33,7 +33,7 @@ boolean containsPair(String password) {
     password.find(pairs)
 }
 
-boolean containsSequence(String password) {
+boolean containsSequence(password) {
     def chars = password.toCharArray()
     (0..password.length()-3).any { n ->
         int a = chars[n]
@@ -43,13 +43,13 @@ boolean containsSequence(String password) {
     }
 }
 
-boolean isValid(String password) {
+boolean isValid(password) {
     containsPair(password) &&
         !containsForbiddenChars(password) &&
         containsSequence(password)
 }
 
-String findNext(String password) {
+String findNext(password) {
     while (true) {
         password = getNextString(password)
         if (isValid(password)) return password
