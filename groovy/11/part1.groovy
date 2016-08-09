@@ -21,8 +21,7 @@ String getNextString(s) {
 }
 
 boolean containsForbiddenChars(password) {
-    def forbiddenChars = ['i', 'o', 'l']
-    forbiddenChars.any { password.contains it }
+    password =~ /i|o|l/
 }
 
 boolean containsPair(password) {
