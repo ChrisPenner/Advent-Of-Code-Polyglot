@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurper;
+import groovy.json.JsonSlurper
 
 int add(o) {
     if (o instanceof Map) {                 // JSON object
