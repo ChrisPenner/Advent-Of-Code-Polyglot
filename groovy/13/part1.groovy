@@ -1,21 +1,17 @@
 #!/usr/bin/env groovy
 
-import java.util.regex.*
-
-//def r = ~/(.*) would (lose|gain) (\d\d) happiness units by sitting next to (.*)/
-def p = Pattern.compile('(.*) would (lose|gain) (\\d*) happiness units by sitting next to (.*)\\.')
+def r = /(.*) would (lose|gain) (\d*) happiness units by sitting next to (.*)\./
 
 def people = [] as Set
 def preferences = [:]
 
 new File('input.txt').eachLine { line ->
-    def m = p.matcher(line)
-    m.find()
-    def person = m.group(1)
-    def lose = m.group(2) == 'lose'
-    def score = m.group(3) as int
+    def groups = (line =~ r)[0]
+    def person = groups[1]
+    def lose = groups[2] == 'lose'
+    def score = groups[3] as int
     if (lose) score = -score
-    def nextTo = m.group(4)
+    def nextTo = groups[4]
     people << person
     preferences[[person, nextTo]] = score
 }
