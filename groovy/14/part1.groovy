@@ -1,34 +1,21 @@
 #!/usr/bin/env groovy
 
-// Your puzzle input
-def duration = 2503
+def duration = 2503             // your puzzle input
 
-class Deer {
-    int speed, flyTime, restTime
-
-    Deer(values) {
-        (speed, flyTime, restTime) = values.collect {it as int}
-    }
-}
-
-def rValue = ~/\d+/
-
-// Read file and create deers
-def lines = new File('input.txt') as String []
-def deers = lines.collect { new Deer(it.findAll(rValue)) }
+def rValue = ~/\d+/             // digits
 
 // Compute distance travelled by a deer
-def computeDistance = { deer ->
+def computeDistance = { line ->
+    def (speed, flyTime, restTime) = line.findAll(rValue).collect { it as int }
+
     def t = duration            // remaining time
     def distance = 0            // distance so far
     def flying = true           // starts flying
-    def d                       // available duration
+
     while (t > 0) {
+        def d = [flying ? flyTime : restTime, t].min()
         if (flying) {
-            d = [deer.flyTime, t].min()
-            distance = distance + deer.speed * d
-        } else {
-            d = [deer.restTime, t].min()
+            distance = distance + speed * d
         }
         t = t - d               // decrease remaining time
         flying = !flying        // switch state
@@ -37,4 +24,6 @@ def computeDistance = { deer ->
     distance
 }
 
-println deers.collect { computeDistance it }.max()
+// Read file and compute distances. Find max
+def lines = new File('input.txt') as String []
+println lines.collect { computeDistance it }.max()
