@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def duration = 2503
+def duration = 2503             // your puzzle input
 
 class Deer {
     int speed, flyTime, restTime, remaining, distance, score
