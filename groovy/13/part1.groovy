@@ -16,12 +16,12 @@ new File('input.txt').eachLine { line ->
     preferences[[person, neighbor]] = score
 }
 
-def seat = { index -> (index >= 0 ? index : index+8) % 8 }
-
 def computeScore = { table ->
     def count = 0
     table.eachWithIndex { person, i ->
-        count += preferences[[person, table.get(seat(i-1))]] + preferences[[person, table.get(seat(i+1))]]
+        def left = table[i-1]
+        def right = table[(i+1)%8]
+        count += (preferences[[person, left]]) + (preferences[[person, right]])
     }
     count
 }
