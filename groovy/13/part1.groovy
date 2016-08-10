@@ -3,7 +3,7 @@
 def r = /(.*) would (lose|gain) (\d*) happiness units by sitting next to (.*)\./
 
 def people = [] as Set
-def preferences = [:]
+def preferences = [:]       // k=[person, neighbor]; v=score
 
 new File('input.txt').eachLine { line ->
     def groups = (line =~ r)[0]
@@ -11,9 +11,9 @@ new File('input.txt').eachLine { line ->
     def lose = groups[2] == 'lose'
     def score = groups[3] as int
     if (lose) score = -score
-    def nextTo = groups[4]
+    def neighbor = groups[4]
     people << person
-    preferences[[person, nextTo]] = score
+    preferences[[person, neighbor]] = score
 }
 
 def seat = { index -> (index >= 0 ? index : index+8) % 8 }
