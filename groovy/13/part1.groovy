@@ -20,7 +20,7 @@ def computeScore = { table ->
     int count = 0
     table.eachWithIndex { guest, i ->
         def left = table[i-1]
-        def right = table[(i+1)%8]
+        def right = table[(i+1)%table.size()]
         count += preferences[[guest, left]] + preferences[[guest, right]]
     }
     count
