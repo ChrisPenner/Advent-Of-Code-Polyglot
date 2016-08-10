@@ -6,8 +6,7 @@ def rValue = ~/\d+/             // digits
 
 // Compute distance travelled by a deer
 def computeDistance = { line ->
-    def (speed, flyTime, restTime) = line.findAll(rValue).collect { it as int }
-
+    def (speed, flyTime, restTime) = line.findAll(rValue)*.toInteger()
     def t = duration            // remaining time
     def distance = 0            // distance so far
     def flying = true           // starts flying
