@@ -17,11 +17,11 @@ new File('input.txt').eachLine { line ->
 }
 
 def computeScore = { table ->
-    def count = 0
+    int count = 0
     table.eachWithIndex { person, i ->
         def left = table[i-1]
         def right = table[(i+1)%8]
-        count += (preferences[[person, left]]) + (preferences[[person, right]])
+        count += preferences[[person, left]] + preferences[[person, right]]
     }
     count
 }
