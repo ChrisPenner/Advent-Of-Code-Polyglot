@@ -14,8 +14,8 @@ new File('input.txt').eachLine { line ->
     def person = m.group(1)
     def lose = m.group(2) == 'lose'
     def score = m.group(3) as int
-    def nextTo = m.group(4)
     if (lose) score = -score
+    def nextTo = m.group(4)
     people << person
     preferences[[person, nextTo]] = score
 }
