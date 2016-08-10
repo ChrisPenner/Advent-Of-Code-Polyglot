@@ -18,10 +18,10 @@ new File('input.txt').eachLine { line ->
 
 def seat = { index -> (index >= 0 ? index : index+8) % 8 }
 
-def computeScore = { perm ->
+def computeScore = { table ->
     def count = 0
-    perm.eachWithIndex { person, i ->
-        count += preferences[[person, perm.get(seat(i-1))]] + preferences[[person, perm.get(seat(i+1))]]
+    table.eachWithIndex { person, i ->
+        count += preferences[[person, table.get(seat(i-1))]] + preferences[[person, table.get(seat(i+1))]]
     }
     count
 }
