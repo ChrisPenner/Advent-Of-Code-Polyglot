@@ -1,17 +1,17 @@
 #!/usr/bin/env groovy
 
-def r = /(.*) would (lose|gain) (\d*) happiness units by sitting next to (.*)\./
+def rPerson = ~/[A-Z][a-z]*/
+def rScore = ~/\d+/
+def sLose = 'lose'
 
 def people = [] as Set
 def preferences = [:]       // k=[person, neighbor]; v=score
 
 new File('input.txt').eachLine { line ->
-    def groups = (line =~ r)[0]
-    def person = groups[1]
-    def lose = groups[2] == 'lose'
-    def score = groups[3] as int
+    def (person, neighbor) = line.findAll(rPerson)
+    def lose = line.contains(sLose)
+    def score = line.find(rScore) as int
     if (lose) score = -score
-    def neighbor = groups[4]
     people << person
     preferences[[person, neighbor]] = score
 }
