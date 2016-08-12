@@ -1,28 +1,30 @@
 #!/usr/bin/env groovy
 
-// Read ingredients and store numeric characteristics
+// Read ingredients and store their numeric characteristics
 def lines = new File('input.txt') as String []
 def rNumber = ~/-?\d+/
 def ingredients = lines.collect({ it.findAll(rNumber)*.toInteger() })
 
 def highScore = 0
 
-// Combine the given ingredient proportions and test score
+// Combine the given ingredient proportions and test the score
 def combine = { proportions ->
     def score = (0..3).collect { property ->
         def pScore = 0
         ingredients.eachWithIndex { ingredient, i ->
             pScore += ingredient[property] * proportions[i]
         }
-        pScore > 0 ? pScore : 0
-    }.inject(1) { product, item -> product*item } // mult the properties scores
+        pScore > 0 ? pScore : 0 // 0 if property score is negative
+    }.inject(1) { product, item -> product*item } // mult all properties scores
 
     if (score > highScore) {
         highScore = score
     }
 }
 
-// Try all possible proportions of ingredients
+// Try all possible proportions of ingredients.
+// When a valid proportion (=100%) is found, we test it directly
+// rather than building a list of all combinations upfront
 def mix
 mix = { proportions ->
     def left = 100 - (proportions.sum() ?: 0)
