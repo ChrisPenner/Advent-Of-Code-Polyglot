@@ -32,7 +32,6 @@ mix = { proportions ->
         combine(proportions + [left])
     } else {
         (0..left).each {
-            def that = proportions + [it]
             mix(proportions + [it])
         }
     }
