@@ -14,7 +14,7 @@ def combine = { proportions ->
         ingredients.eachWithIndex { ingredient, i ->
             pScore += ingredient[property] * proportions[i]
         }
-        pScore > 0 ? pScore : 0 // 0 if property score is negative
+        pScore = [pScore, 0].max()                // 0 if property score is negative
     }.inject(1) { product, item -> product*item } // mult all properties scores
 
     if (score > highScore) {
