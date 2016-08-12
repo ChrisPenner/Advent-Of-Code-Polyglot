@@ -25,6 +25,7 @@ def combine = { proportions ->
 // Try all possible proportions of ingredients.
 // When a valid proportion (=100%) is found, we test it directly
 // rather than building a list of all combinations upfront
+// and testing only afterwards
 def mix
 mix = { proportions ->
     def left = 100 - (proportions.sum() ?: 0)
