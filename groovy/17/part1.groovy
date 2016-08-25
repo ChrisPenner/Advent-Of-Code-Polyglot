@@ -16,7 +16,7 @@ references regardeless of their 'foo' capacity.
 Examples:
 
 def foo = [1, 1, 1, 2]
-assert 1 == foo.subsequences().size()   // not what we want!
+assert 7 == foo.subsequences().size()   // not what we want!
 def bar = [1, 1, 1, 2].collect({ new Expando(foo: it) })
-assert 7 == bar.subsequences().size()   // that's better
+assert 15 == bar.subsequences().size()   // that's better
 */
