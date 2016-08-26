@@ -2,7 +2,6 @@
 
 def capacities = new File('input.txt') as List<Integer>
 
-// Map each container capacity to an object
 println capacities
         // hack for reference
         .collect { new Expando(foo: it as int) }
