@@ -2,9 +2,11 @@
 
 def capacities = new File('input.txt') as List<Integer>
 
-// Map each container capacity to an object
-def containers = capacities.collect({ new Expando(foo: it as int) })
-println containers.subsequences().findAll({ it.foo.sum() == 150 }).size()
+println capacities
+        .collect({ new Expando(foo: it as int) })   // hack for reference
+        .subsequences()
+        .findAll({ it.foo.sum() == 150 })
+        .size()
 
 
 /*
